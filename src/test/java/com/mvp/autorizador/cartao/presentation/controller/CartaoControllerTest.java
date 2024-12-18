@@ -50,7 +50,7 @@ class CartaoControllerTest {
         mockMvc.perform(post("/cartoes")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(cartaoDto)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
     }
 
     @Test
