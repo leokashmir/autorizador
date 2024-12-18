@@ -9,4 +9,5 @@ public interface CartaoRepository  {
 
     Optional<Cartao> findByNumeroCartao(String numeroCartao);
     Cartao save(Cartao cartao);
+
 }

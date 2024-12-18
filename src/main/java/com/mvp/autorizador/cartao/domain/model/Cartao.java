@@ -15,6 +15,9 @@ import java.math.BigDecimal;
 public class Cartao {
 
 
+    @Version
+    private Integer version;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID")
@@ -28,4 +31,6 @@ public class Cartao {
 
     @Column(name = "SALDO_CARTAO", precision = 10, scale = 2, nullable = false)
     BigDecimal saldoCartao;
+
+
 }

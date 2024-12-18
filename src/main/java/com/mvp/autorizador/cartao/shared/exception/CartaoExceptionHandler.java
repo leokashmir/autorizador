@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-@ControllerAdvice
+@ControllerAdvice(basePackages = "com.mvp.autorizador.cartao")
 public class CartaoExceptionHandler  extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(CartaoJaExistenteException.class)

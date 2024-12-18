@@ -12,12 +12,8 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class CriarCartaoUseCase {
 
-
     private CartaoRepositoryImpl repository;
 
-    public Cartao save(Cartao cartao) {
-        return repository.save(cartao);
-    }
     public void adicionaSaldo(Cartao cartao) {
         cartao.setSaldoCartao(new BigDecimal("500.00"));
     }

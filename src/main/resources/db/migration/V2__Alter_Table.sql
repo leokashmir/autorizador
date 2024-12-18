@@ -1,0 +1,1 @@
+ALTER TABLE cartao ADD COLUMN version INT DEFAULT 0
