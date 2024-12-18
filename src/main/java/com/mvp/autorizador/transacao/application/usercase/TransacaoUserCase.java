@@ -12,7 +12,7 @@ import java.util.Optional;
 public class TransacaoUserCase {
 
 
-    public void ValidarSaldo(TransacaoDto transacaoDto, CartaoDto cartao) {
+    public void validarSaldo(TransacaoDto transacaoDto, CartaoDto cartao) {
         Optional.of(cartao)
                 .filter(c -> c.saldo().compareTo(transacaoDto.valor()) >= 0)
                 .orElseThrow(() -> TransacaoException.builder()

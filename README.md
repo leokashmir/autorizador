@@ -23,10 +23,16 @@ Certifica-se que o Docker ja esteja rodando em sua maquina, em seguida basta exe
 em sua IDE. Ao iniciar a aplicação os conteiners ja serão criados no Docker, inclusive no banco de dados, ja será
 criado a tabela necessaria para a aplicação.
 
+## Autenticação
+```
+  Autenticação: BASIC, com login = username e senha = password
+```
+
+
 ## API - Cartao
 
 * Cadastra um novo cartão <br>
-```http
+```
   POST /cartoes
 ```
 

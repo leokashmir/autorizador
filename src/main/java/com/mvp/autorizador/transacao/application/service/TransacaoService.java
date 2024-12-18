@@ -29,10 +29,10 @@ public class TransacaoService {
                         .build());
 
         transacaoUserCase.validarSenha(transacaoDto, cartao);
-        transacaoUserCase.ValidarSaldo(transacaoDto, cartao);
+        transacaoUserCase.validarSaldo(transacaoDto, cartao);
 
         try {
-            cartaoService.AtualizaDadosCartao(autualizarValorCartao(transacaoDto, cartao));
+            cartaoService.atualizaDadosCartao(autualizarValorCartao(transacaoDto, cartao));
         } catch (OptimisticLockingFailureException e) {
             throw new OptimisticLockingFailureException(null);
         }

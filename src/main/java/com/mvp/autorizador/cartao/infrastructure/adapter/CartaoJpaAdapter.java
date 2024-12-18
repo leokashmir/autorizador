@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface CartaoJpaAdpater extends JpaRepository<Cartao, Long> {
+public interface CartaoJpaAdapter extends JpaRepository<Cartao, Long> {
 
 
     Optional<Cartao> findByNumeroCartao(String numeroCartao);

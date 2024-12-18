@@ -2,13 +2,9 @@ package com.mvp.autorizador.cartao.infrastructure.repository;
 
 import com.mvp.autorizador.cartao.domain.model.Cartao;
 import com.mvp.autorizador.cartao.domain.repository.CartaoRepository;
-import com.mvp.autorizador.cartao.infrastructure.adapter.CartaoJpaAdpater;
+import com.mvp.autorizador.cartao.infrastructure.adapter.CartaoJpaAdapter;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
@@ -16,7 +12,7 @@ import java.util.Optional;
 public class CartaoRepositoryImpl implements CartaoRepository {
 
 
-    private CartaoJpaAdpater cartaoJpaAdpater;
+    private CartaoJpaAdapter cartaoJpaAdpater;
 
     @Override
     public Optional<Cartao> findByNumeroCartao(String numeroCartao) {

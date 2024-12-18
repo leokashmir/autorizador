@@ -6,6 +6,7 @@ import com.mvp.autorizador.cartao.domain.model.Cartao;
 import com.mvp.autorizador.cartao.presentation.dto.CartaoDto;
 import com.mvp.autorizador.cartao.presentation.dto.SaldoDto;
 import com.mvp.autorizador.cartao.shared.exception.CartaoJaExistenteException;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class CartaoController {
     private final CartaoService cartaoService;
 
     @PostMapping
-    public ResponseEntity<?> cadastrarCartao(@RequestBody final CartaoDto cartaoDto) {
+    public ResponseEntity<Void> cadastrarCartao(@RequestBody @Valid final CartaoDto cartaoDto) {
 
          var cartao =   Cartao.builder()
                         .numeroCartao(cartaoDto.numeroCartao())
@@ -30,7 +31,7 @@ public class CartaoController {
 
         cartaoService.criarCartao(cartao);
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/{numeroCartao}")

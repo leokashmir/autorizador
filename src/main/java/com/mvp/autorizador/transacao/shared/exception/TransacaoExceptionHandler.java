@@ -1,16 +1,22 @@
 package com.mvp.autorizador.transacao.shared.exception;
 
 
+import com.mvp.autorizador.cartao.shared.exception.ErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import org.springframework.web.context.request.WebRequest;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @ControllerAdvice(basePackages = "com.mvp.autorizador.transacao")
-public class TransacaoExceptionHandler  extends ResponseEntityExceptionHandler {
+public class TransacaoExceptionHandler  {
 
     @ExceptionHandler(TransacaoException.class)
     public ResponseEntity<?> handleTransacaoException(TransacaoException exc,
@@ -30,5 +36,16 @@ public class TransacaoExceptionHandler  extends ResponseEntityExceptionHandler {
                 null,
                 HttpStatus.UNPROCESSABLE_ENTITY);
     }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public  ResponseEntity<List<ErrorResponse>> handleMethodArgumentNotValid(MethodArgumentNotValidException exc, WebRequest request) {
+        List<ErrorResponse> errors = exc.getBindingResult().getAllErrors().stream()
+                .map(error ->
+                        new ErrorResponse(((FieldError) error).getField(),
+                                error.getDefaultMessage()))
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+    }
+
 
 }

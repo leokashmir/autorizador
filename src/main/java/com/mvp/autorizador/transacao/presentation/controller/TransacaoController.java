@@ -3,6 +3,7 @@ package com.mvp.autorizador.transacao.presentation.controller;
 
 import com.mvp.autorizador.transacao.application.service.TransacaoService;
 import com.mvp.autorizador.transacao.presentation.dto.TransacaoDto;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class TransacaoController {
     private final TransacaoService transacaoService;
 
     @PostMapping
-    public ResponseEntity<?> realizaTransacao(@RequestBody TransacaoDto transacao) {
+    public ResponseEntity<?> realizaTransacao(@RequestBody @Valid  TransacaoDto transacao) {
 
         transacaoService.autorizaTransacao(transacao);
         return new ResponseEntity<>( "OK", HttpStatus.CREATED);

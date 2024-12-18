@@ -16,7 +16,7 @@ public class Cartao {
 
 
     @Version
-    private Integer version;
+    private Long version;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

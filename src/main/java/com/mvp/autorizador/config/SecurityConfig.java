@@ -33,8 +33,8 @@ public class SecurityConfig {
     @Bean
     public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
         UserDetails user = User.builder()
-                .username("teste")
-                .password(passwordEncoder.encode("123"))
+                .username("username")
+                .password(passwordEncoder.encode("password"))
                 .roles("USER")
                 .build();
 
