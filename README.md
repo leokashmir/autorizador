@@ -31,10 +31,11 @@ criado a tabela necessaria para a aplicação.
 
 ## API - Cartao
 
-* Cadastra um novo cartão <br>
-```
-  POST /cartoes
-```
+
+
+| Metodo | URL  | Retorno HTTP Codigos                                  | Descrição                |
+|:-------|:--------|:------------------------------------------------------|--------------------------|
+| `POST` | `/cartoes `  | 201  Cartão criado com Sucesso, 422  Cartão já exista | Cadastrar novo cartão |
 
   <b>Body</b> - Objeto de Request e Response.
 ```
@@ -44,10 +45,12 @@ criado a tabela necessaria para a aplicação.
    }        
 ```
 
-* Obtem saldo do cartão  <br>
-```http
-  GET /cartoes/{numeroCartao}
-```
+  <br>
+
+
+| Metodo | URL  | Retorno HTTP Codigos                                  |Descrição|
+|:-------|:--------|:------------------------------------------------------|------|
+| `GET`  | `/cartoes `  | 200 Consulta ok, 404 Cartão não existe                | Obtem saldo do cartão |
 
 *  Response.
 ```
@@ -55,3 +58,23 @@ criado a tabela necessaria para a aplicação.
      1000.00
    }        
 ``` 
+
+## API - Transação
+
+
+| Metodo | URL  | Retorno HTTP Codigos                                  |Descrição |
+|:-------|:--------|:------------------------------------------------------|-------|
+| `POST`  | `/transacoes `  | 201 Realizada com Sucesso, 422 Não Autorizada         |Realiza Transação|
+<b>Body</b> - Objeto de Request.
+```
+   {
+      "numeroCartao": "6549873025634578",
+      "senhaCartao": "1234",
+      "valor": 190.94
+   }        
+```
+
+
+
+
+
