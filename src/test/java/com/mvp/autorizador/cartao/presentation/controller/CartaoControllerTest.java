@@ -1,7 +1,7 @@
 package com.mvp.autorizador.cartao.presentation.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mvp.autorizador.config.TestSecurityConfig;
+import com.mvp.autorizador.TestSecurityConfig;
 import com.mvp.autorizador.cartao.application.service.CartaoService;
 import com.mvp.autorizador.cartao.domain.model.Cartao;
 import com.mvp.autorizador.cartao.presentation.dto.CartaoDto;
@@ -15,14 +15,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.List;
-
 import static org.mockito.Mockito.doThrow;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -80,5 +76,12 @@ class CartaoControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(invalidCartaoDto)))
                 .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("Should fail to create a card when input validation fails")
+    void shouldOObterSaldo() throws Exception {
+        mockMvc.perform(get("/cartoes/1234987595487534")
+                .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
     }
 }

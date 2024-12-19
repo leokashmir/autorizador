@@ -1,0 +1,154 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > CriarCartaoUseCase</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.mvp.autorizador.cartao.application.usercase</a>
+</div>
+
+<h1>Coverage Summary for Class: CriarCartaoUseCase (com.mvp.autorizador.cartao.application.usercase)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CriarCartaoUseCase</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">CriarCartaoUseCase$MockitoMock$9JQ7eZWU</td>
+  </tr>
+  <tr>
+    <td class="name">CriarCartaoUseCase$MockitoMock$9JQ7eZWU$auxiliary$2zobk2gm</td>
+  </tr>
+  <tr>
+    <td class="name">CriarCartaoUseCase$MockitoMock$9JQ7eZWU$auxiliary$D9zAjwT6</td>
+  </tr>
+  <tr>
+    <td class="name">CriarCartaoUseCase$MockitoMock$9JQ7eZWU$auxiliary$eZcDVbzB</td>
+  </tr>
+  <tr>
+    <td class="name">CriarCartaoUseCase$MockitoMock$9JQ7eZWU$auxiliary$Y4mzj6ET</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.mvp.autorizador.cartao.application.usercase;
+&nbsp;
+&nbsp;import com.mvp.autorizador.cartao.domain.model.Cartao;
+&nbsp;import com.mvp.autorizador.cartao.infrastructure.repository.CartaoRepositoryImpl;
+&nbsp;import com.mvp.autorizador.cartao.shared.exception.CartaoJaExistenteException;
+&nbsp;import lombok.AllArgsConstructor;
+&nbsp;import org.springframework.stereotype.Component;
+&nbsp;
+&nbsp;import java.math.BigDecimal;
+&nbsp;
+&nbsp;@Component
+<b class="fc">&nbsp;@AllArgsConstructor</b>
+&nbsp;public class CriarCartaoUseCase {
+&nbsp;
+&nbsp;    private CartaoRepositoryImpl repository;
+&nbsp;
+&nbsp;    public void adicionaSaldo(Cartao cartao) {
+<b class="fc">&nbsp;        cartao.setSaldoCartao(new BigDecimal(&quot;500.00&quot;));</b>
+&nbsp;    }
+&nbsp;    public void existeCartao(String numeroCartao) {
+<b class="fc">&nbsp;         repository.findByNumeroCartao(numeroCartao).ifPresent(cartao -&gt; {</b>
+<b class="fc">&nbsp;             throw  CartaoJaExistenteException.builder()</b>
+<b class="fc">&nbsp;                     .numeroCartao(cartao.getNumeroCartao())</b>
+<b class="fc">&nbsp;                     .senhaCartao(cartao.getSenhaCartao())</b>
+<b class="fc">&nbsp;                     .build();</b>
+&nbsp;         });
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-19 03:07</div>
+</div>
+</body>
+</html>

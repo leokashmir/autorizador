@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: autorizador
+  flyway:
+    enabled: false
+
+  datasource:
+    url: jdbc:h2:mem:registrocreditorio
+    username: super
+    password: master
+    driverClassName: org.h2.Driver

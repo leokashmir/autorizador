@@ -1,0 +1,173 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > TransacaoService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.mvp.autorizador.transacao.application.service</a>
+</div>
+
+<h1>Coverage Summary for Class: TransacaoService (com.mvp.autorizador.transacao.application.service)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TransacaoService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (12/12)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">TransacaoService$$EnhancerBySpringCGLIB$$a1ab6e9b</td>
+  </tr>
+  <tr>
+    <td class="name">TransacaoService$MockitoMock$H4HdleFP</td>
+  </tr>
+  <tr>
+    <td class="name">TransacaoService$MockitoMock$H4HdleFP$auxiliary$FOofbeND</td>
+  </tr>
+  <tr>
+    <td class="name">TransacaoService$MockitoMock$H4HdleFP$auxiliary$kRmWVtYx</td>
+  </tr>
+  <tr>
+    <td class="name">TransacaoService$MockitoMock$H4HdleFP$auxiliary$nOPtsZ6K</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (12/12)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.mvp.autorizador.transacao.application.service;
+&nbsp;
+&nbsp;import com.mvp.autorizador.cartao.application.service.CartaoService;
+&nbsp;import com.mvp.autorizador.cartao.presentation.dto.CartaoDto;
+&nbsp;import com.mvp.autorizador.transacao.application.usercase.TransacaoUserCase;
+&nbsp;import com.mvp.autorizador.transacao.presentation.dto.TransacaoDto;
+&nbsp;import com.mvp.autorizador.transacao.shared.enums.AutorizacaoNegadaEnum;
+&nbsp;import com.mvp.autorizador.transacao.shared.exception.TransacaoException;
+&nbsp;import lombok.AllArgsConstructor;
+&nbsp;import org.springframework.dao.OptimisticLockingFailureException;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;import org.springframework.transaction.annotation.Transactional;
+&nbsp;
+&nbsp;
+&nbsp;@Service
+<b class="fc">&nbsp;@AllArgsConstructor</b>
+&nbsp;public class TransacaoService {
+&nbsp;
+&nbsp;    private CartaoService cartaoService;
+&nbsp;    private TransacaoUserCase transacaoUserCase;
+&nbsp;
+&nbsp;    @Transactional
+&nbsp;    public void autorizaTransacao(TransacaoDto transacaoDto)  {
+&nbsp;
+<b class="fc">&nbsp;        CartaoDto cartao = cartaoService.obterDadosCartao(</b>
+<b class="fc">&nbsp;                        new CartaoDto(null, transacaoDto.numeroCartao(), null, null, null))</b>
+<b class="fc">&nbsp;                .orElseThrow(() -&gt; TransacaoException.builder()</b>
+<b class="fc">&nbsp;                        .motivo(AutorizacaoNegadaEnum.CARTAO_INEXISTENTE.getValue())</b>
+<b class="fc">&nbsp;                        .build());</b>
+&nbsp;
+<b class="fc">&nbsp;        transacaoUserCase.validarSenha(transacaoDto, cartao);</b>
+<b class="fc">&nbsp;        transacaoUserCase.validarSaldo(transacaoDto, cartao);</b>
+&nbsp;
+&nbsp;        try {
+<b class="fc">&nbsp;            cartaoService.atualizaDadosCartao(autualizarValorCartao(transacaoDto, cartao));</b>
+&nbsp;        } catch (OptimisticLockingFailureException e) {
+<b class="fc">&nbsp;            throw new OptimisticLockingFailureException(null);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private CartaoDto autualizarValorCartao(TransacaoDto transacaoDto, CartaoDto cartao) {
+<b class="fc">&nbsp;        var resultado = cartao.saldo().subtract(transacaoDto.valor());</b>
+<b class="fc">&nbsp;        return new CartaoDto(cartao.id(), cartao.numeroCartao(), cartao.senha(), resultado, cartao.version());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-19 03:07</div>
+</div>
+</body>
+</html>

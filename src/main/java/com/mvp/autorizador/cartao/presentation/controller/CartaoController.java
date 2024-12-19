@@ -6,12 +6,14 @@ import com.mvp.autorizador.cartao.domain.model.Cartao;
 import com.mvp.autorizador.cartao.presentation.dto.CartaoDto;
 import com.mvp.autorizador.cartao.presentation.dto.SaldoDto;
 import com.mvp.autorizador.cartao.shared.exception.CartaoJaExistenteException;
-import jakarta.validation.Valid;
+
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RequestMapping("/cartoes")
 @Controller

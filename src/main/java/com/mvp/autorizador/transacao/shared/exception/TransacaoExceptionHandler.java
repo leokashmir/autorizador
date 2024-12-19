@@ -2,7 +2,6 @@ package com.mvp.autorizador.transacao.shared.exception;
 
 
 import com.mvp.autorizador.cartao.shared.exception.ErrorResponse;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,20 +20,15 @@ public class TransacaoExceptionHandler  {
 
     @ExceptionHandler(TransacaoException.class)
     public ResponseEntity<?> handleTransacaoException(TransacaoException exc,
-                                                              HttpServletRequest request) {
+                                                      HttpServletRequest request) {
 
-        return new ResponseEntity<>(
-                exc.getMotivo() ,
-                null,
-                HttpStatus.UNPROCESSABLE_ENTITY);
+        return new ResponseEntity<>(exc.getMotivo(),null,HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
     @ExceptionHandler(OptimisticLockingFailureException.class)
     public ResponseEntity<?> handleTransacaoConcorrenteException(OptimisticLockingFailureException exc,
-                                                      HttpServletRequest request) {
-        return new ResponseEntity<>(
-                "O cartão foi modificado por outra transação. Tente novamente." ,
-                null,
+                                                                 HttpServletRequest request) {
+        return new ResponseEntity<>("O cartão foi modificado por outra transação. Tente novamente." ,null,
                 HttpStatus.UNPROCESSABLE_ENTITY);
     }
 

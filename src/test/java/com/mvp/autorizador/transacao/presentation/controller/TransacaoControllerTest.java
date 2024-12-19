@@ -1,7 +1,7 @@
 package com.mvp.autorizador.transacao.presentation.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mvp.autorizador.config.TestSecurityConfig;
+import com.mvp.autorizador.TestSecurityConfig;
 import com.mvp.autorizador.transacao.application.service.TransacaoService;
 import com.mvp.autorizador.transacao.presentation.dto.TransacaoDto;
 import org.junit.jupiter.api.Test;

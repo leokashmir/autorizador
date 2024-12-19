@@ -1,0 +1,151 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > CartaoExceptionHandler</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.mvp.autorizador.cartao.shared.exception</a>
+</div>
+
+<h1>Coverage Summary for Class: CartaoExceptionHandler (com.mvp.autorizador.cartao.shared.exception)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CartaoExceptionHandler</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    91,7%
+  </span>
+  <span class="absValue">
+    (11/12)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.mvp.autorizador.cartao.shared.exception;
+&nbsp;
+&nbsp;
+&nbsp;import org.springframework.http.HttpStatus;
+&nbsp;import org.springframework.http.ResponseEntity;
+&nbsp;import org.springframework.validation.FieldError;
+&nbsp;import org.springframework.web.bind.MethodArgumentNotValidException;
+&nbsp;import org.springframework.web.bind.annotation.ExceptionHandler;
+&nbsp;import org.springframework.web.bind.annotation.RestControllerAdvice;
+&nbsp;import org.springframework.web.context.request.WebRequest;
+&nbsp;
+&nbsp;import javax.servlet.http.HttpServletRequest;
+&nbsp;import java.util.List;
+&nbsp;import java.util.stream.Collectors;
+&nbsp;
+&nbsp;@RestControllerAdvice(basePackages = &quot;com.mvp.autorizador.cartao&quot;)
+<b class="fc">&nbsp;public class CartaoExceptionHandler  {</b>
+&nbsp;
+&nbsp;    @ExceptionHandler(CartaoJaExistenteException.class)
+&nbsp;    public ResponseEntity&lt;MessageResponse&gt; handleCartaoJaExistenteException(CartaoJaExistenteException exc,
+&nbsp;                                                   HttpServletRequest request) {
+&nbsp;
+<b class="fc">&nbsp;        return new ResponseEntity&lt;&gt;(</b>
+<b class="fc">&nbsp;                MessageResponse.builder().numeroCartao(exc.getNumeroCartao())</b>
+<b class="fc">&nbsp;                        .senhaCartao(exc.getSenhaCartao())</b>
+<b class="fc">&nbsp;                        .build() ,</b>
+&nbsp;                null,
+&nbsp;                HttpStatus.UNPROCESSABLE_ENTITY);
+&nbsp;    }
+&nbsp;
+&nbsp;    @ExceptionHandler(CartaoNaoExistenteException.class)
+&nbsp;    public ResponseEntity&lt;Void&gt; handleCartaoJaExistenteException(CartaoNaoExistenteException exc,
+&nbsp;                                                              HttpServletRequest request) {
+<b class="nc">&nbsp;        return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @ExceptionHandler(MethodArgumentNotValidException.class)
+&nbsp;    public  ResponseEntity&lt;List&lt;ErrorResponse&gt;&gt; handleMethodArgumentNotValid(MethodArgumentNotValidException exc, WebRequest request) {
+<b class="fc">&nbsp;        List&lt;ErrorResponse&gt; errors = exc.getBindingResult().getAllErrors().stream()</b>
+<b class="fc">&nbsp;                .map(error -&gt;</b>
+<b class="fc">&nbsp;                        new ErrorResponse(((FieldError) error).getField(),</b>
+<b class="fc">&nbsp;                                error.getDefaultMessage()))</b>
+<b class="fc">&nbsp;                .collect(Collectors.toList());</b>
+<b class="fc">&nbsp;        return new ResponseEntity&lt;&gt;(errors, HttpStatus.BAD_REQUEST);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-19 03:07</div>
+</div>
+</body>
+</html>

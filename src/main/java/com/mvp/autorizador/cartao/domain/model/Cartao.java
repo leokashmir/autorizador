@@ -3,12 +3,14 @@ package com.mvp.autorizador.cartao.domain.model;
 
 
 
-import jakarta.persistence.*;
+
 import lombok.*;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Entity @Builder @Getter @Setter
+@Entity
+@Builder @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "cartao")
