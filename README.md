@@ -20,13 +20,13 @@ Flyway (para versionamento do banco de dados),entre outros Partners.
 
 ## Executar o Projeto
 1 - Certifica-se que o Docker ja esteja instalado e rodando em sua maquina executando este comando: `docker -v`  <br>
-![verifica_versao_docker.png](https://github.com/leokashmir/autorizador/blob/img/verifica_versao_docker.png?raw=true)<br>
+![verifica_versao_docker.png](https://github.com/leokashmir/autorizador/img/verifica_versao_docker.png?raw=true)<br>
 
 2 - Execute o comando   `docker-compose up --build`, aguarde finalizar a criação do container<br>
-![docker_compose_1.png](https://github.com/leokashmir/autorizador/blob/img/docker_compose_1.png?raw=true)<br>
+![docker_compose_1.png](https://github.com/leokashmir/autorizador/img/docker_compose_1.png?raw=true)<br>
 
 3 - Execute ocomando `docker-compose ps` para verificar se o container foi criado<br>
-![docker_Compose_PS.png](https://github.com/leokashmir/autorizador/blob/img/docker_Compose_PS.png?raw=true)<br>
+![docker_Compose_PS.png](https://github.com/leokashmir/autorizador/img/docker_Compose_PS.png?raw=true)<br>
 
 4 - Execute o projeto em sua IDE.<br>
 
@@ -89,9 +89,9 @@ Flyway (para versionamento do banco de dados),entre outros Partners.
 1-1 Menu-> Settings -> Plugins, Procure o Code Coverage for java e clique em install<br>
 
 
-![ImgPluginCoverage.png](https://github.com/leokashmir/autorizador/blob/img/ImgPluginCoverage.png?raw=true)<br>
+![ImgPluginCoverage.png](https://github.com/leokashmir/autorizador/img/ImgPluginCoverage.png?raw=true)<br>
 2 - Clique com o botão direito no arquivo/pasta de teste ou na classe que deseja executar<br>
 2.2 - No menu que apareceu, cliquem em run/debug -> Run  with Coverage  <br>
-![executarTestes.png](https://github.com/leokashmir/autorizador/blob/img/executarTestes.png?raw=true)<br>
+![executarTestes.png](https://github.com/leokashmir/autorizador/img/executarTestes.png?raw=true)<br>
 3 - A cobertura será exibida diretamente na IDE, basta clicar no icone a direta que é um escudo.<br>
-![CoberturaDeTestes.png](https://github.com/leokashmir/autorizador/blob/img/CoberturaDeTestes.png?raw=true)<br>
+![CoberturaDeTestes.png](https://github.com/leokashmir/autorizador/img/CoberturaDeTestes.png?raw=true)<br>
