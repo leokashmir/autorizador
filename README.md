@@ -13,7 +13,6 @@ Flyway (para versionamento do banco de dados),entre outros Partners.
 - SpringBoot      -> https://spring.io/projects/spring-boot
 - SpringData      -> https://spring.io/projects/spring-data
 - Lombok          -> https://projectlombok.org/
-- Hibernate       -> https://hibernate.org/
 - MySql           -> https://www.mysql.com/
 - Flyway          -> https://flywaydb.org/
 - Docker          -> https://www.docker.com/
