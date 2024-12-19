@@ -18,14 +18,14 @@ Flyway (para versionamento do banco de dados),entre outros Partners.
 - Docker          -> https://www.docker.com/
 
 ## Executar o Projeto
-1 - Certifica-se que o Docker ja esteja instalado e rodando em sua maquina executando este comando: `docker -v`  <br>
-![verifica_versao_docker.png](https://github.com/leokashmir/autorizador/blob/main/img/verifica_versao_docker.png?raw=true)<br>
+1 - Certifica-se que o Docker ja esteja instalado e rodando em sua maquina executando este comando: `docker -v`  <br><br>
+![verifica_versao_docker.png](https://github.com/leokashmir/autorizador/blob/main/img/verifica_versao_docker.png?raw=true)<br><br>
 
-2 - Execute o comando   `docker-compose up --build`, aguarde finalizar a criação do container<br>
-![docker_compose_1.png](https://github.com/leokashmir/autorizador/blob/main/img/docker_compose_1.png?raw=true)<br>
+2 - Execute o comando   `docker-compose up --build`, aguarde finalizar a criação do container<br><br>
+![docker_compose_1.png](https://github.com/leokashmir/autorizador/blob/main/img/docker_compose_1.png?raw=true)<br><br>
 
-3 - Execute ocomando `docker-compose ps` para verificar se o container foi criado<br>
-![docker_Compose_PS.png](https://github.com/leokashmir/autorizador/blob/main/img/docker_Compose_PS.png?raw=true)<br>
+3 - Execute ocomando `docker-compose ps` para verificar se o container foi criado<br><br>
+![docker_Compose_PS.png](https://github.com/leokashmir/autorizador/blob/main/img/docker_Compose_PS.png?raw=true)<br><br>
 
 4 - Execute o projeto em sua IDE.<br><br><hr>
 
@@ -88,9 +88,9 @@ Flyway (para versionamento do banco de dados),entre outros Partners.
 1-1 Menu-> Settings -> Plugins, Procure o Code Coverage for java e clique em install<br>
 
 
-![ImgPluginCoverage.png](https://github.com/leokashmir/autorizador/blob/main/img/ImgPluginCoverage.png?raw=true)<br>
-2 - Clique com o botão direito no arquivo/pasta de teste ou na classe que deseja executar<br>
-2.2 - No menu que apareceu, cliquem em run/debug -> Run  with Coverage  <br>
-![executarTestes.png](https://github.com/leokashmir/autorizador/blob/main/img/executarTestes.png?raw=true)<br>
-3 - A cobertura será exibida diretamente na IDE, basta clicar no icone a direta que é um escudo.<br>
-![CoberturaDeTestes.png](https://github.com/leokashmir/autorizador/blob/main/img/CoberturaDeTestes.png?raw=true)<br>
+![ImgPluginCoverage.png](https://github.com/leokashmir/autorizador/blob/main/img/ImgPluginCoverage.png?raw=true)<br><br>
+2 - Clique com o botão direito no arquivo/pasta de teste ou na classe que deseja executar<br><br>
+2.2 - No menu que apareceu, cliquem em run/debug -> Run  with Coverage  <br><br>
+![executarTestes.png](https://github.com/leokashmir/autorizador/blob/main/img/executarTestes.png?raw=true)<br><br>
+3 - A cobertura será exibida diretamente na IDE, basta clicar no icone a direta que é um escudo.<br><br>
+![CoberturaDeTestes.png](https://github.com/leokashmir/autorizador/blob/main/img/CoberturaDeTestes.png?raw=true)<br><br>
